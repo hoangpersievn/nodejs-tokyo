@@ -1,4 +1,7 @@
 h1 list users
+form(action='users/users', method="GET")
+    input(type="text", name="q")
+    button search
 ul 
     each user in users
         li= user.name
