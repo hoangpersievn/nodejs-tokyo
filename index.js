@@ -23,5 +23,12 @@ app.get('/user', (req, res) => {
     })
 })
 
+app.get('/user/search', (req, res) => {
+    let q = req.query.q;
+    let matchUsers = users.filter( (user) => {
+        return user.name.indexOf(q) !== -1;
+    });
+    res.render('users/users.pug', { users : matchUsers})
+})
 
 
