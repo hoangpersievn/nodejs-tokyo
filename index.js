@@ -14,6 +14,9 @@ db.defaults({ users : [] }).write();
 
 app.listen(port, () => console.log(`server listen on port ${port}`));
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
 app.get('/', (req, res) => {
     res.render('index.pug', {admin : 'HoangPersievn'});
 })
@@ -32,14 +35,17 @@ app.get('/user/search', (req, res) => {
     res.render('users/users.pug', { users : matchUsers})
 })
 
-app.use(bodyParser.json()); // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-
 app.get('/user/create', (req, res) => {
     res.render('users/create.pug');
 });
 
+app.get('/user/:id', (req, res) => {
+    let id = parseInt(req.params.id);
+    let user = db.get('users').find({ id: id }).value();
+    res.render('users/view.pug', { user: user });
+})
+
 app.post('/user/create', (req, res) => {
     db.get("users").push(req.body).write();
     res.redirect('/user');
-})
+});
