@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const db = require('./db.js');
+const userRouter = require('./routes/user.router.js');
 
 const app = express();
 const port = 3000;
@@ -9,39 +9,15 @@ const port = 3000;
 app.set('views', './views');
 app.set('view engine', 'pug');
 
-db.defaults({ users : [] }).write();
 
 app.listen(port, () => console.log(`server listen on port ${port}`));
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
     res.render('index.pug', {admin : 'HoangPersievn'});
-})
-
-app.get('/user', (req, res) => {
-    res.render('users/users.pug', {
-        users: db.get("users").value()
-    })
-})
-
-app.get('/user/search', (req, res) => {
-    let q = req.query.q;
-    let matchUsers = db.get("users").value().filter( (user) => {
-        return user.name.indexOf(q) !== -1;
-    });
-    res.render('users/users.pug', { users : matchUsers})
-})
-
-app.get('/user/create', (req, res) => {
-    res.render('users/create.pug');
-});
-
-app.get('/user/:id', (req, res) => {
-    let id = parseInt(req.params.id);
-    let user = db.get('users').find({ id: id }).value();
-    res.render('users/view.pug', { user: user });
 })
 
 app.post('/user/create', (req, res) => {
