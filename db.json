@@ -1,24 +1,19 @@
 {
   "users": [
     {
-      "name": "haong",
-      "nick": "persie",
-      "id": 1
+      "name": "chuong",
+      "nick": "zinu",
+      "id": "5LQprdU2q"
     },
     {
       "name": "phuc",
       "nick": "fuck",
-      "id": 2
+      "id": "biX7HJszF"
     },
     {
       "name": "man",
       "nick": "man beo",
-      "id": 3
-    },
-    {
-      "name": "chuong",
-      "nick": "zinu",
-      "id": 4
+      "id": "9kUdpT_ZO"
     }
   ]
 }
