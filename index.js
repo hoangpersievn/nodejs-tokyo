@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const shortid = require('shortid');
 
-const userRouter = require('./routes/user.router.js');
+const userRouter = require('./routes/user.route.js');
 
 const app = express();
 const port = 3000;
