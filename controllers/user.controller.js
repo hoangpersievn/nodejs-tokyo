@@ -27,6 +27,15 @@ module.exports.getId = (req, res) => {
 
 module.exports.createUser = (req, res) => {
     req.body.id = shortid.generate();
+    let err = [];
+    if(!req.body.name){
+        err.push("Name not null");
+    }
+    if(err.length)
+    {
+        res.render('users/create.pug', { err : err });
+        return;
+    }
     db.get("users").push(req.body).write();
     res.redirect('/user');
 };

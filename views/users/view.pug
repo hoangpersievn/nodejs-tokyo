@@ -1,12 +1,11 @@
 extends ../layouts/common.pug
 block listUser    
-    h1 View user
-    p
-        b name : 
-            span &nbsp;
-            span= user.name
-    p        
-        b nick name :
-            span &nbsp;
-            span= user.nick
-    a(href="/user", class="btn btn-primary") list user
+    div(class="text-center mt-3")
+        p
+            b name : 
+                span &nbsp;
+                span= user.name
+        p        
+            b nick name :
+                span &nbsp;
+                span= user.nick

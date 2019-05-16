@@ -1,12 +1,13 @@
 extends ../layouts/common.pug
 block listUser 
 
-    h1 create user
     form(action="/user/create", class="mt-3 mb-3" method="POST")
-        div(class="form-group")
+        .form-group
             label User name
             input(type="text", class="form-control", name="name", placeholder="Enter user name")
-        div(class="form-group")
+            if err
+                .alert.alert-danger.mt-3= err
+        .form-group
             label Nick name
             input(type="text", class="form-control", name="nick", placeholder="Enter nick name")
         button(class="btn btn-danger mt-3") Create
