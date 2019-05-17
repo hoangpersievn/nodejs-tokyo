@@ -24,6 +24,7 @@ module.exports.authenUser = (req, res, next) => {
         });
         return;
     };
-
+  
+    res.cookie('userId', user.id);
     res.redirect('/user');
 }
