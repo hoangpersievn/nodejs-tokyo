@@ -3,7 +3,8 @@
     {
       "name": "chuong",
       "nick": "zinu",
-      "id": "5LQprdU2q"
+      "id": "5LQprdU2q",
+      "password": "123"
     },
     {
       "name": "phuc",
@@ -39,6 +40,11 @@
       "name": "cao",
       "nick": "caoi3",
       "id": "GDFYBl_3W"
+    },
+    {
+      "name": "hoang",
+      "nick": "fafsdf",
+      "id": "Npe2rYtZ7"
     }
   ]
 }

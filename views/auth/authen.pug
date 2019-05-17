@@ -1,0 +1,13 @@
+extends ../layouts/common.pug
+block listUser 
+
+    form(action="/authen/login", class="mt-3 mb-3" method="POST")
+        .form-group
+            label Username
+            input(type="text", class="form-control", name="name", placeholder="Enter user name")
+            .alert.alert-danger= erruser
+        .form-group
+            label Password
+            input(type="password", class="form-control", name="password", placeholder="Enter nick name")
+            .alert.alert-danger= errpass
+        button(class="btn btn-danger mt-3") Logon
