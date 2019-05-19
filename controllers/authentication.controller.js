@@ -1,5 +1,5 @@
+const md5 = require('md5');
 const db = require('../db.js');
-const shortid = require('shortid'); 
 
 module.exports.authen = (req, res, next) => {
     res.render('auth/authen.pug');
@@ -15,10 +15,8 @@ module.exports.authenUser = (req, res, next) => {
         res.render('auth/authen.pug', { erruser : "Username does not exist." });
         return;
     };
-
-    if( password !== user.password){
-        console.log(password);
-        console.log(user.password);
+    let hashPassword = md5(password);
+    if( user.password !== hashPassword){
         res.render('auth/authen.pug', {
             errpass : "Wrong password."
         });
